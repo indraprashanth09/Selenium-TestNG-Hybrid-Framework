@@ -1,12 +1,12 @@
 package com.indra.automation.testcases;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import com.indra.automation.base.*;
 
 import org.openqa.selenium.*;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import com.indra.automation.utils.Utils;
 
@@ -48,7 +48,7 @@ public class RegisterTest extends Base {
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
 		String actualHeading = driver.findElement(By.xpath("//div[@id='content']/h1")).getText();
-		Assert.assertEquals(actualHeading, "Your Account Has Been Created!");
+		AssertJUnit.assertEquals(actualHeading, "Your Account Has Been Created!");
 		driver.quit();
 
 	}
@@ -71,7 +71,7 @@ public class RegisterTest extends Base {
 		String errorMsg = driver
 				.findElement(By.xpath("//div[contains(text(),'E-Mail Address does not appear to be valid!')]"))
 				.getText();
-		Assert.assertEquals(errorMsg, "E-Mail Address does not appear to be valid!");
+		AssertJUnit.assertEquals(errorMsg, "E-Mail Address does not appear to be valid!");
 		driver.quit();
 
 	}

@@ -1,12 +1,12 @@
 package com.indra.automation.testcases;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
-
 import com.indra.automation.base.*;
-
-import junit.framework.Assert;
 
 public class SearchTest extends Base {
 
@@ -33,7 +33,7 @@ public class SearchTest extends Base {
 	{
 		driver.findElement(By.xpath("//input[@name=\"search\"]")).sendKeys("HP");
 		driver.findElement(By.xpath("//button[@class=\"btn btn-default btn-lg\"]")).click();
-		Assert.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
 		
 	}
 	
@@ -43,7 +43,7 @@ public class SearchTest extends Base {
 		driver.findElement(By.xpath("//input[@name=\"search\"]")).sendKeys("Honda");
 		driver.findElement(By.xpath("//button[@class=\"btn btn-default btn-lg\"]")).click();
 		String message = driver.findElement(By.xpath("//p[contains(text(),'There is no product that matches the search criteria')]")).getText();
-		Assert.assertEquals(message, "There is no product that matches the search criteria.");
+		AssertJUnit.assertEquals(message, "There is no product that matches the search criteria.");
 	}
 	
 	@Test
@@ -52,7 +52,7 @@ public class SearchTest extends Base {
 		driver.findElement(By.xpath("//input[@name=\"search\"]")).clear();
 		driver.findElement(By.xpath("//button[@class=\"btn btn-default btn-lg\"]")).click();
 		String message = driver.findElement(By.xpath("//p[contains(text(),'There is no product that matches the search criteria')]")).getText();
-		Assert.assertEquals(message, "There is no product that matches the search criteria.");
+		AssertJUnit.assertEquals(message, "There is no product that matches the search criteria.");
 	}
 
 }
